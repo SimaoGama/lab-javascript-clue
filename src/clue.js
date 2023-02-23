@@ -1,6 +1,6 @@
 // ITERATION 1
 
-// Suspects Array
+// Suspects Array / 6 objects in 1 array
 
 const suspectsArray = [
   {
@@ -64,7 +64,7 @@ const suspectsArray = [
   }
 ];
 
-// Rooms Array
+// Rooms Array 15 objects
 
 const roomsArray = [
   { name: 'Dining Room' },
@@ -84,7 +84,7 @@ const roomsArray = [
   { name: 'Patio' }
 ];
 
-// Weapons Array
+// Weapons Array 9 objects
 
 const weaponsArray = [
   { name: 'rope', weight: 10 },
@@ -100,10 +100,34 @@ const weaponsArray = [
 
 // ITERATION 2
 
-function selectRandom() {}
+function selectRandom(array) {
 
-function pickMystery() {}
+  if(!array.length){
+    return undefined;
+  }
+
+const randomNumber = Math.floor(Math.random() * array.length);
+
+return array[randomNumber];
+
+}
+
+function pickMystery() {
+
+  const newMystery = {};
+
+  newMystery.suspect = selectRandom(suspectsArray);
+  newMystery.weapon = selectRandom(weaponsArray);
+  newMystery.room = selectRandom(roomsArray);
+  
+  return newMystery;
+
+}
 
 // ITERATION 3
 
-function revealMystery() {}
+function revealMystery(envelope) {
+
+    return `${envelope.suspect.firstName} ${envelope.suspect.lastName} killed Mr. Boddy using the ${envelope.weapon.name} in the ${envelope.room.name}!`;
+
+}
